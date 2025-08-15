@@ -4,7 +4,7 @@ let btn = document.querySelector("#btn");
 let chatContainer =document.querySelector(".chat-container");
 let userMessage = null;
 
-let Api_Url = "https://chatgpt-clone-backend-iay2.onrender.com/api/chat"
+const API_URL = "http://localhost:5000/api/ask";
 
 function createChatBox(html,className){
     let div = document.createElement("div")
@@ -13,36 +13,32 @@ function createChatBox(html,className){
     return div
 }
 
-async function getApiResponse(aiChatBox){
+async function getApiResponse(aiChatBox) {
+    let textElement = aiChatBox.querySelector(".text");
+    try {
+        let response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userMessage })
+        });
 
-let textElement = aiChatBox.querySelector(".text");
+        if (!response.ok) {
+            textElement.innerText = "Error: " + response.status + " " + response.statusText;
+            return;
+        }
 
-    try{
-        let response= await fetch(Api_Url,{
-            method:"POST",
-            headers: { "Content-Type" : "application/json" },
-            body:JSON.stringify({
-                contents: [
-                    {
-                        "role":"user",
-                        "parts": [{text: userMessage}]
-                    }
-                ]
-            })
-        })
         let data = await response.json();
-        let ApiResponse = data?.candidates[0].content.parts[0].text;
-        textElement.innerText = ApiResponse;
-
+        textElement.innerText = data?.reply ?? "No response";
     }
-    catch(error){
-        console.log(error)
-
+    catch (error) {
+        console.log(error);
+        textElement.innerText = "Error fetching reply";
     }
-    finally{
-        aiChatBox.querySelector(".loading").style.display ="none"
+    finally {
+        aiChatBox.querySelector(".loading").style.display = "none";
     }
 }
+
 
 function showLoding(){
     let html = `<div class="img">
