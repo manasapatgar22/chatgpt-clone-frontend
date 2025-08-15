@@ -13,8 +13,9 @@ Deployed on **GitHub Pages** (frontend) and **Render** (backend).
 ---
 
 ## 📸 Preview
-![Preview Screenshot](screenshot.png)  
-*(Replace `screenshot.png` with an actual screenshot from your project)*
+![Preview Screenshot](ss.png)  
+
+![Preview Screenshot](ss1.png) 
 
 ---
 
@@ -40,9 +41,9 @@ Deployed on **GitHub Pages** (frontend) and **Render** (backend).
 
 ---
 
-## 📦 Installation
+### 📦 Installation
 
-### 1️⃣ Clone the repositories
+1️⃣ Clone the repositories
 ```bash
 # Frontend
 git clone https://github.com/manasapatgar22/chatgpt-clone-frontend.git
