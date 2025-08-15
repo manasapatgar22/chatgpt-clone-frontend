@@ -40,7 +40,7 @@ let textElement = aiChatBox.querySelector(".text");
 
     }
     finally{
-        aiChatBox.querySelector(".loading").style.display ="none"
+        aiChatBox.querySelector(".loading").style.display = "none";
     }
 }
 
@@ -62,7 +62,7 @@ btn.addEventListener("click", () => {
         container.style.display = "none" 
     }
     userMessage = prompt.value;
-    if(!userMessage.trim()) return;
+    if (!userMessage || userMessage.trim() === "") return;
     let html =`<div class="img">
                 <img src="user.png" alt="user" width="50">
             </div>
@@ -78,4 +78,5 @@ prompt.addEventListener("keydown", (e) => {
     if (e.key === "Enter") btn.click();
 
 });
+
 
