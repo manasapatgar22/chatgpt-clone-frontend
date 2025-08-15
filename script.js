@@ -4,7 +4,7 @@ let btn = document.querySelector("#btn");
 let chatContainer =document.querySelector(".chat-container");
 let userMessage = null;
 
-let Api_Url = "https://chatgpt-clone-backend-vc8f.onrender.com"
+let Api_Url = "https://chatgpt-clone-backend-vc8f.onrender.com/api/chat"
 
 function createChatBox(html,className){
     let div = document.createElement("div")
@@ -78,3 +78,4 @@ prompt.addEventListener("keydown", (e) => {
     if (e.key === "Enter") btn.click();
 
 });
+
